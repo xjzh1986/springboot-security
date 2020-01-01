@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reach.deepev.user.mapper.UserRoleRefMapper">
+  <resultMap id="BaseResultMap" type="com.reach.deepev.user.entity.UserRoleRef">
+    <id column="user_role_id" jdbcType="INTEGER" property="userRoleId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_role_ref
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.reach.deepev.user.entity.UserRoleRef">
+    insert into user_role_ref (user_role_id, user_id, role_id
+      )
+    values (#{userRoleId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.reach.deepev.user.entity.UserRoleRef">
+    update user_role_ref
+    set user_id = #{userId,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=INTEGER}
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select user_role_id, user_id, role_id
+    from user_role_ref
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select user_role_id, user_id, role_id
+    from user_role_ref
+  </select>
+
+</mapper>
