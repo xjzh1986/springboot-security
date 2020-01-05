@@ -20,7 +20,7 @@ public class SysUserContorller {
     public SysUser index(@RequestBody SysUser sysUser) {
         System.out.println(sysUser.getUserName());
         System.out.println(sysUser.getPassword());
-
+        System.out.println(sysUser.getPassword());
         return sysUser;
     }
 }
